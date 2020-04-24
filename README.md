@@ -29,26 +29,50 @@
     "description": "React BoilerPlate",
     "main": "index.js",
     "scripts": {
-        "start": "webpack-dev-server --mode development --open --hot",
-        "build": "webpack --mode production"
+      "start": "webpack-dev-server --mode development --open --hot",
+      "build": "webpack --mode production",
+      "lint": "eslint 'src/**/*.js'",
+      "lint:fix": "prettier-eslint $PWD/'src/**/*.js' --write"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Attamjot/reactBoilterplate"
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.js": [
+        "npm run lint:fix",
+        "git add"
+      ]
     },
     "author": "Attamjot Singh Khurana ( AJ )",
     "license": "ISC",
     "dependencies": {
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+      "react": "^16.13.1",
+      "react-dom": "^16.13.1"
     },
     "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-loader": "^7.1.5",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
-        "html-webpack-plugin": "^4.2.0",
-        "webpack": "^4.43.0",
-        "webpack-cli": "^3.3.11",
-        "webpack-dev-server": "^3.10.3"
+      "babel-core": "^6.26.3",
+      "babel-loader": "^7.1.5",
+      "babel-preset-env": "^1.7.0",
+      "babel-preset-react": "^6.24.1",
+      "eslint": "^6.8.0",
+      "eslint-plugin-react": "^7.19.0",
+      "html-webpack-plugin": "^4.2.0",
+      "husky": "^4.2.5",
+      "lint-staged": "^10.1.7",
+      "prettier-eslint": "^9.0.1",
+      "prettier-eslint-cli": "^5.0.0",
+      "webpack": "^4.43.0",
+      "webpack-cli": "^3.3.11",
+      "webpack-dev-server": "^3.10.3"
     }
-    }
+  }
+
 
 ```
 
@@ -100,3 +124,5 @@ Make sure to use the version of babel-core, babel-loader near by otherwise confl
   "format": "prettier-eslint --write $PWD/'src/**/*.js'"
 //                                    /|\
 ```
+
+- Adding husky , and lint-staged for sending proper formatted commit to git.
